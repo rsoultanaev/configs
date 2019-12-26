@@ -17,8 +17,8 @@ sudo apt-get install            \
     texlive-full                \
     build-essential             \
     clang                       \
-    cmake                       \
     ninja-build                 \
+    tree                        \
     python3.8
 
 # Prompt with current working dir
@@ -26,3 +26,22 @@ cat .bashrc >> ~/.bashrc
 
 # Set aliases
 cp .bash_aliases ~/
+
+# Set up app dirs
+APPS_DIR=~/opt/apps
+APPS_BIN_DIR=~/opt/bin
+mkdir -p ${APPS_DIR}
+mkdir -p ${APPS_BIN_DIR}
+echo 'export PATH=${PATH}:${APPS_BIN_DIR}' >> ~/.bashrc
+
+# Install cmake like this because apt is out of date
+mkdir -p ${APPS_DIR}/cmake
+CMAKE_SH=cmake-3.16.2-Linux-x86_64.sh
+wget https://github.com/Kitware/CMake/releases/download/v3.16.2/${CMAKE_SH}
+CMAKE_INSTALL=$(pwd)/${CMAKE_SH}
+pushd ${APPS_DIR}/cmake
+    sh ${CMAKE_INSTALL} --skip-license --exclude-subdir
+popd
+pushd ${APPS_BIN_DIR}
+    ln -s ${APPS_DIR}/cmake/bin/cmake
+popd
