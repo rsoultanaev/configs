@@ -1,5 +1,20 @@
 #!/bin/bash
 
+# Set bash settings
+cat .bashrc >> ~/.bashrc
+
+# Set aliases
+cp .bash_aliases ~/
+
+# Activate bash settings
+source ~/.bashrc
+
+# Set up app dirs
+APPS_DIR=~/opt/apps
+APPS_BIN_DIR=~/opt/bin
+mkdir -p ${APPS_DIR}
+mkdir -p ${APPS_BIN_DIR}
+
 # For arc-theme
 sudo add-apt-repository ppa:noobslab/themes
 
@@ -20,19 +35,6 @@ sudo apt-get install            \
     ninja-build                 \
     tree                        \
     python3.8
-
-# Prompt with current working dir
-cat .bashrc >> ~/.bashrc
-
-# Set aliases
-cp .bash_aliases ~/
-
-# Set up app dirs
-APPS_DIR=~/opt/apps
-APPS_BIN_DIR=~/opt/bin
-mkdir -p ${APPS_DIR}
-mkdir -p ${APPS_BIN_DIR}
-echo 'export PATH=${PATH}:${APPS_BIN_DIR}' >> ~/.bashrc
 
 # Install cmake like this because apt is out of date
 mkdir -p ${APPS_DIR}/cmake

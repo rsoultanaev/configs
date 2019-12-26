@@ -13,3 +13,7 @@ fi
 # Set history size
 HISTSIZE=10000
 HISTFILESIZE=10000
+
+# Set up PATH
+APPS_BIN_DIR=~/opt/bin
+export PATH=${PATH}:${APPS_BIN_DIR}
