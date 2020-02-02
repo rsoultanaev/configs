@@ -34,7 +34,9 @@ sudo apt-get install            \
     clang                       \
     ninja-build                 \
     tree                        \
-    python3.8
+    python3.8                   \
+    python3.8-distutils         \
+    python3.8-venv
 
 # Install cmake like this because apt is out of date
 mkdir -p ${APPS_DIR}/cmake
