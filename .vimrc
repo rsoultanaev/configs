@@ -1,22 +1,23 @@
 set nocompatible                     " be iMproved, required
 filetype off                         " required
 
-" ------------------------- VUNDLE -------------------------
+set encoding=utf-8
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" ------------------------- PLUGINS --------------------------
+if has('nvim')
+    let pluginpath=stdpath('data') . '/plugged'
+else
+    let pluginpath='~/.vim/plugged'
+endif
 
-Plugin 'VundleVim/Vundle.vim'               " plugin manager
+call plug#begin(pluginpath)
 
-Plugin 'sjl/badwolf'                        " colorscheme
-Plugin 'ctrlpvim/ctrlp.vim'                 " fuzzy file finder
-Plugin 'christoomey/vim-tmux-navigator'     " make vim and tmux panes the same
+Plug 'sjl/badwolf'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
-" All of your Plugins must be added before the following line
-call vundle#end()                   " required
-filetype plugin indent on           " required
-
-" ------------------------- VUNDLE -------------------------
+call plug#end()
+" ------------------------- PLUGINS --------------------------
 
 
 
@@ -57,7 +58,9 @@ set ruler                           " Show current line & column
 set nofoldenable                    " Disable folding
 set cc         =80                  " Show right margin at 80 chars
 
-set clipboard=exclude:.*            " Disable clipboard for faster startup
+if !has('nvim')
+    set clipboard=exclude:.*        " Disable clipboard for faster startup
+endif
 
 let mapleader=" "
 
@@ -73,6 +76,10 @@ nnoremap <silent> <C-m> <C-d>
 " Swap the functions of 0 and ^
 nnoremap 0 ^
 nnoremap ^ 0
+
+" J and K to move by 10 lines
+nnoremap J 10j
+nnoremap K 10k
 
 " Disable ex mode
 map Q <Nop>
@@ -90,6 +97,12 @@ colorscheme badwolf
 
 " Execute :wall when navigating away from a split
 let g:tmux_navigator_save_on_switch = 2
+
+" Remove patterns from searches like ctrl-p
+set wildignore+=*/*-build-*/*
+set wildignore+=*/build/*
+
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " WP to enter word processor mode
 func! WordProcessorMode()

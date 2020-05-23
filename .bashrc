@@ -14,6 +14,9 @@ fi
 HISTSIZE=10000
 HISTFILESIZE=10000
 
+# App installation dirs
+export APPS_DIR=~/opt/apps
+export APPS_BIN_DIR=~/opt/bin
+
 # Set up PATH
-APPS_BIN_DIR=~/opt/bin
 export PATH=${PATH}:${APPS_BIN_DIR}

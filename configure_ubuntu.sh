@@ -10,8 +10,6 @@ cp .bash_aliases ~/
 source ~/.bashrc
 
 # Set up app dirs
-APPS_DIR=~/opt/apps
-APPS_BIN_DIR=~/opt/bin
 mkdir -p ${APPS_DIR}
 mkdir -p ${APPS_BIN_DIR}
 
@@ -24,7 +22,6 @@ sudo add-apt-repository ppa:snwh/pulp
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install            \
-    vim                         \
     git                         \
     tmux                        \
     arc-theme                   \
@@ -34,18 +31,19 @@ sudo apt-get install            \
     clang                       \
     ninja-build                 \
     tree                        \
+    curl                        \
     python3.8                   \
     python3.8-distutils         \
     python3.8-venv
 
-# Install cmake like this because apt is out of date
-mkdir -p ${APPS_DIR}/cmake
-CMAKE_SH=cmake-3.16.2-Linux-x86_64.sh
-wget https://github.com/Kitware/CMake/releases/download/v3.16.2/${CMAKE_SH}
-CMAKE_INSTALL=$(pwd)/${CMAKE_SH}
-pushd ${APPS_DIR}/cmake
-    sh ${CMAKE_INSTALL} --skip-license --exclude-subdir
-popd
-pushd ${APPS_BIN_DIR}
-    ln -s ${APPS_DIR}/cmake/bin/cmake
-popd
+# Custom installations
+./install_cmake.sh
+./install_neovim.sh
+
+# Copy configs
+cp .vimrc ~/
+cp .tmux.conf ~/
+mkdir -p ~/.config/nvim ; cp init.vim ~/.config/nvim/
+
+# Install vim plugins
+vim +PlugInstall +qall
