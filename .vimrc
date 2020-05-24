@@ -102,6 +102,7 @@ let g:tmux_navigator_save_on_switch = 2
 set wildignore+=*/*-build-*/*
 set wildignore+=*/build/*
 
+" Syntax highlighting for // comments in json
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " WP to enter word processor mode

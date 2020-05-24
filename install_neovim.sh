@@ -2,14 +2,10 @@
 
 NEOVIM_VERSION=0.4.3
 
-# Dependencies
-sudo apt-get install gettext libtool libtool-bin autoconf automake g++ pkg-config unzip
-
 git clone https://github.com/neovim/neovim.git
 pushd neovim
     git checkout v${NEOVIM_VERSION}
-    make CMAKE_BUILD_TYPE=Release
-    make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=${APPS_DIR}/neovim"
+    make CMAKE_BUILD_TYPE=Release CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=${APPS_DIR}/neovim"
     make install
 
     pushd ${APPS_BIN_DIR}
@@ -17,5 +13,6 @@ pushd neovim
     popd
 popd
 
-# Cleanup
-rm -rf neovim
+cp .vimrc ~/
+mkdir -p ~/.config/nvim ; cp init.vim ~/.config/nvim/
+vim +PlugInstall +qall
