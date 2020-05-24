@@ -1,20 +1,22 @@
 #!/bin/bash
 
+set -ex
+
 # Set up app dirs for custom installations
 mkdir -p ${APPS_DIR}
 mkdir -p ${APPS_BIN_DIR}
 
 # For arc-theme
-sudo add-apt-repository ppa:noobslab/themes
+sudo add-apt-repository -y ppa:noobslab/themes
 
 # For paper-icon-theme
-sudo add-apt-repository ppa:snwh/pulp
+sudo add-apt-repository -y ppa:snwh/ppa
 
 # Apt installs
-sudo apt update
-sudo apt upgrade
-sudo apt install $(cat package-list)
-sudo apt autoremove
+sudo apt -y update
+sudo apt -y upgrade
+sudo apt -y install $(cat package-list)
+sudo apt -y autoremove
 
 # Custom installations
 WORKDIR=workdir

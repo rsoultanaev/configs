@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 NEOVIM_VERSION=0.4.3
 
 git clone https://github.com/neovim/neovim.git

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 CMAKE_VERSION=3.16.2
 
 CMAKE_SH=cmake-${CMAKE_VERSION}-Linux-x86_64.sh
