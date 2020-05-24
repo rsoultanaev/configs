@@ -3,6 +3,7 @@
 set -ex
 
 CONFIG_DIR=$(pwd)
+export CONFIG_DIR
 
 # Set up app dirs for custom installations
 mkdir -p ${APPS_DIR}
@@ -24,11 +25,11 @@ sudo apt -y autoremove
 WORKDIR=workdir
 mkdir -p ${WORKDIR}
 pushd ${WORKDIR}
-    .${CONFIG_DIR}/install_cmake.sh
-    .${CONFIG_DIR}/install_neovim.sh
+    ${CONFIG_DIR}/install_cmake.sh
+    ${CONFIG_DIR}/install_neovim.sh
 popd
 
 # Copy configs
 cp .tmux.conf ~/
-tar -C ${WORKDIR} xzf xfce-desktop-config.tar.gz
+tar xzf xfce-desktop-config.tar.gz -C ${WORKDIR}
 cp ${WORKDIR}/xfce-desktop-config/* ~/.config/

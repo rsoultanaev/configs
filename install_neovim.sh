@@ -11,10 +11,14 @@ pushd neovim
     make install
 
     pushd ${APPS_BIN_DIR}
-        ln -s ${APPS_DIR}/neovim/bin
+        ln -s ${APPS_DIR}/neovim/bin/nvim
     popd
 popd
 
-cp .vimrc ~/
-mkdir -p ~/.config/nvim ; cp init.vim ~/.config/nvim/
-vim +PlugInstall +qall
+# Copy configs
+cp ${CONFIG_DIR}/.vimrc ~/
+mkdir -p ~/.config/nvim ; cp ${CONFIG_DIR}/init.vim ~/.config/nvim/
+
+# Install plugins
+curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+nvim +PlugInstall +qall
