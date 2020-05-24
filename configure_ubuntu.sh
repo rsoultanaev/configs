@@ -32,4 +32,4 @@ popd
 # Copy configs
 cp .tmux.conf ~/
 tar xzf xfce-desktop-config.tar.gz -C ${WORKDIR}
-cp ${WORKDIR}/xfce-desktop-config/* ~/.config/
+cp -r ${WORKDIR}/xfce-desktop-config/* ~/.config/
