@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Setup bash
-cat .bashrc >> ~/.bashrc
-cp .bash_aliases ~/
-source ~/.bashrc
-
 # Set up app dirs for custom installations
 mkdir -p ${APPS_DIR}
 mkdir -p ${APPS_BIN_DIR}
