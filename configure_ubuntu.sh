@@ -2,6 +2,8 @@
 
 set -ex
 
+CONFIG_DIR=$(pwd)
+
 # Set up app dirs for custom installations
 mkdir -p ${APPS_DIR}
 mkdir -p ${APPS_BIN_DIR}
@@ -22,8 +24,8 @@ sudo apt -y autoremove
 WORKDIR=workdir
 mkdir -p ${WORKDIR}
 pushd ${WORKDIR}
-    ./install_cmake.sh
-    ./install_neovim.sh
+    .${CONFIG_DIR}/install_cmake.sh
+    .${CONFIG_DIR}/install_neovim.sh
 popd
 
 # Copy configs
