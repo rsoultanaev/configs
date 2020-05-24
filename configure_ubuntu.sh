@@ -22,11 +22,14 @@ sudo apt install $(cat package-list)
 sudo apt autoremove
 
 # Custom installations
-mkdir -p workdir
-pushd workdir
+WORKDIR=workdir
+mkdir -p ${WORKDIR}
+pushd ${WORKDIR}
     ./install_cmake.sh
     ./install_neovim.sh
 popd
 
 # Copy configs
 cp .tmux.conf ~/
+tar -C ${WORKDIR} xzf xfce-desktop-config.tar.gz
+cp ${WORKDIR}/xfce-desktop-config/* ~/.config/
