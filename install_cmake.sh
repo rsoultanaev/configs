@@ -2,7 +2,7 @@
 
 set -ex
 
-CMAKE_VERSION=3.16.2
+CMAKE_VERSION=3.20.5
 
 CMAKE_SH=cmake-${CMAKE_VERSION}-Linux-x86_64.sh
 wget https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/${CMAKE_SH}
