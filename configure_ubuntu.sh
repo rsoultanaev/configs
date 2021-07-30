@@ -25,3 +25,6 @@ popd
 
 # Copy configs
 cp .tmux.conf ~/
+
+# Copy scripts
+cp tmstart ~/opt/bin/
