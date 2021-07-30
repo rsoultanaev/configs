@@ -18,3 +18,8 @@ HISTFILESIZE=100000
 export APPS_DIR=~/opt/apps
 export APPS_BIN_DIR=~/opt/bin
 export PATH=${PATH}:${APPS_BIN_DIR}
+export PATH=${PATH}:~/.local/bin
+
+# Disable software control flow to be able to use
+# C-s for jumping forward in history search
+stty -ixon
