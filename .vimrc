@@ -67,6 +67,10 @@ let mapleader=" "
 " Set visualisation of spaces
 let &listchars = 'tab:> ,nbsp:%,trail:-,extends:>,precedes:<'
 
+" <Ctrl-x> saves the file
+nnoremap <C-X> :update<cr>
+inoremap <C-X> <Esc>:update<cr>gi
+
 " <Ctrl-y> redraws the screen and removes any search highlighting.
 nnoremap <silent> <C-y> :let @/ = ""<CR>
 
