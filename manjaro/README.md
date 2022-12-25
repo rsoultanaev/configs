@@ -2,7 +2,7 @@
 
 ### Bash
 
-```
+```bash
 cat .bashrc >> ~/.bashrc
 cp .bash_aliases ~/
 ```
@@ -20,7 +20,7 @@ cmake
 
 ### Neovim setup
 
-```
+```bash
 # Create neovim config dir
 mkdir -p ~/.config/nvim
 
