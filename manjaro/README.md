@@ -3,7 +3,7 @@
 ### Bash
 
 ```bash
-cat .bashrc >> ~/.bashrc
+cat bashrc_settings >> ~/.bashrc
 cp .bash_aliases ~/
 ```
 
@@ -32,4 +32,11 @@ cp init.vim ~/.config/nvim/
 curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
      --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 nvim +PlugInstall +qall
+```
+
+### Other setup
+
+```bash
+cp .tmux.conf ~/
+echo "setxkbmap -option ctrl:nocaps* >> ~/.profile
 ```
